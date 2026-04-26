@@ -28,7 +28,20 @@ This project builds an AI agent that:
 3. Normalizes skills across inconsistent representations  
 4. Matches candidates using multi-dimensional scoring  
 5. Simulates engagement to estimate candidate interest  
-6. Produces a ranked shortlist with clear explanations  
+6. Produces a ranked shortlist with clear explanations
+
+---
+
+### 📌 Description
+
+The system follows a modular AI pipeline:
+
+- **JD Parser** converts job descriptions into structured data  
+- **Resume Parser** extracts structured candidate profiles from PDFs  
+- **Skill Normalization Engine** standardizes skill variations (e.g., ReactJS → React, ML → Machine Learning)  
+- **Matching Engine** evaluates candidates across multiple dimensions  
+- **Engagement Simulation** estimates candidate interest  
+- **Ranking Layer** produces a final score with explainable insights  
 
 ---
 
@@ -126,6 +139,36 @@ Resume Upload → Resume Parser (LLM)
       Streamlit UI
 ```
 The system follows a modular pipeline architecture with independent components for parsing, normalization, scoring, and explainability.
+
+---
+
+## 🎯 Scoring Logic
+
+Each candidate is evaluated using a weighted multi-factor scoring system:
+
+| Component | Weight |
+|----------|--------|
+| Skill Match | 40% |
+| Tool Match | 20% |
+| Soft Skills | 10% |
+| Experience Fit | 15% |
+| Role Similarity | 15% |
+
+### 📊 Final Score Formula
+```
+Final Score =
+0.4 × Skill Score +
+0.2 × Tool Score +
+0.1 × Soft Skill Score +
+0.15 × Experience Score +
+0.15 × Role Score
+```
+### 🧠 Key Details
+
+- Skills are normalized before comparison  
+- Experience is evaluated against required range  
+- Role similarity uses string similarity matching  
+- Engagement score is combined with match score for final ranking  
 
 ---
 
